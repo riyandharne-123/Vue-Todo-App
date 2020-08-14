@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Todo app Vuejs</title>
+</head>
+<body>
+    <style>
+        .container{
+            padding-top:10%;
+        }
+        .btn{
+            color: white;
+            background-color: teal;
+            border-radius: 35px;        
+        }
+        .btn:hover{
+            color: white;
+            background-color: teal;
+            border-radius: 35px;        
+        }
+        .card-header{
+            background-color: teal;
+            color: white;
+        }
+        .card-footer{
+            background-color: teal;
+        }
+        .form-control{
+            border-radius: 20px;
+        }
+.list-group-item{
+    color: teal;
+}
+.fa{
+    font-size: 25px;
+}
+li{
+    padding-bottom: 5px;
+}
+.done{
+    text-decoration: line-through;
+}
+    </style>
+    <main id="app" class="container">
+ <div class="row">
+  <div class="col-md-5" align="center">
+      <div class="card">
+    <div class="card-header">
+   <h2>Vue Todo!</h2>
+    </div>
+    <div class="card-body">
+  <form @submit.prevent="addTodo">
+    <input type="text" class="form-control" 
+    placeholder="Enter Todo"
+     id="newTodo"
+     name="newTodo"
+     v-model="newTodo"
+     >
+     <br>
+    <button type="submit" 
+    class="btn"
+    >
+    <i class="fa fa-check-circle" aria-hidden="true"></i>
+    </button>
+    <button @click.prevent="allDone"
+    class="btn"
+    >
+    <i class="fa fa-check-square-o" aria-hidden="true"></i>
+    </button>
+  </form>
+    </div>
+    <div class="card-footer">
+
+<ul class="list-group">
+<li class="list-group-item" v-for="todo in Todos">
+  <div class="row">
+<div class="col">
+    <h5 :class="{done :todo.done}">{{todo.title}}</h5>
+</div>
+<div class="col">
+    <div class="form-group form-check">
+          <input class="form-check-input" 
+          type="checkbox"
+          v-model="todo.done"
+          style="height: 30px;
+          width: 30px;
+          "
+          > 
+      </div>
+</div>
+<div  class="col">
+    <button 
+    class="btn"
+    @click="removeTodo(todo)"
+    >
+    <i class="fa fa-trash" aria-hidden="true"></i>
+    </button>
+</div>
+  </div>
+</li>
+</ul>
+</div>
+   
+  </div>
+</div>
+ </div>
+    </main>
+</body>
+<script src="./script.js"></script>
+</html>
