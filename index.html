@@ -62,6 +62,13 @@ li{
      v-model="newTodo"
      >
      <br>
+     <input type="text" class="form-control" 
+     placeholder="Enter Tag Name"
+      id="newTag"
+      name="newTag"
+      v-model="newTag"
+      >
+     <br>
     <button type="submit" 
     class="btn"
     >
@@ -80,7 +87,7 @@ li{
 <li class="list-group-item" v-for="todo in Todos">
   <div class="row">
 <div class="col">
-    <h5 :class="{done :todo.done}">{{todo.title}}</h5>
+    <h5 :class="{done :todo.done}">{{todo.title}}</h5> <span class="badge badge-info">{{todo.tag}}</span>
 </div>
 <div class="col">
     <div class="form-group form-check">

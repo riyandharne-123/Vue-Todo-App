@@ -2,15 +2,22 @@ const app = new Vue({
 el:'#app',
 data:{
 newTodo:'',
+newTag:'',
 Todos:[]
 },
 methods:{
     addTodo(){
+        if(this.newTag==""|| this.newTodo==""){
+            alert('error')
+        }
+        else
         this.Todos.push({
        title:this.newTodo,
+       tag:this.newTag,
        done:false
         });
         this.newTodo= '';
+        this.newTag='';
     },
     removeTodo(todo){
         const todoIndex=this.Todos.indexOf(todo);
